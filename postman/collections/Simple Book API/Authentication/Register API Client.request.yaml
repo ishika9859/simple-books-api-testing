@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{baseUrl}}/api-clients/"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \   \"clientName\": \"Ishika\",\r
+
+    \   \"clientEmail\": \"{{$randomEmail}}\"\r
+
+    }"
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 201\", function () {\r
+
+      \    pm.response.to.have.status(201);\r
+
+      });\r
+
+      \r
+
+      const response = pm.response.json();\r
+
+      \r
+
+      pm.environment.set(\"accessToken\", response.accessToken);"
+    language: text/javascript
+settings: {}
+order: 1000

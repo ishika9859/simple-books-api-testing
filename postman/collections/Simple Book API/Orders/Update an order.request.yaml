@@ -1,0 +1,26 @@
+$kind: http-request
+url: "{{baseUrl}}/orders/:orderID"
+method: PATCH
+pathVariables:
+  orderID: "{{orderID}}"
+body:
+  type: json
+  content: "{\r
+
+    \  \"customerName\": \"{{$randomFirstName}} {{$randomLastName}}\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{accessToken}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"order updated Successful\" , ()=>{\r
+
+      \    pm.response.to.have.status(204);\r
+
+      })"
+    language: text/javascript
+settings: {}
+order: 4000

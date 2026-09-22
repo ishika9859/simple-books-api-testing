@@ -1,0 +1,40 @@
+$kind: http-request
+url: "{{baseUrl}}/orders"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"bookId\": {{bookID}},\r
+
+    \  \"customerName\": \"{{$randomFullName}}\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{accessToken}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Successful POST request\", function () {\r
+
+      \    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r
+
+      });\r
+
+      \r
+
+      const response = pm.response.json();\r
+
+      pm.environment.set(\"orderID\", response.orderId);\r
+
+      \r
+
+      pm.test(\"Order was created\", function () {\r
+
+      \    pm.expect(response.created).to.be.true;\r
+
+      });\r\n"
+    language: text/javascript
+settings: {}
+order: 1000

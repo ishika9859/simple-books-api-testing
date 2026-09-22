@@ -1,0 +1,47 @@
+$kind: http-request
+url: "{{baseUrl}}/books?type=non-fiction"
+method: GET
+queryParams:
+  - key: type
+    value: non-fiction
+  - key: limit
+    value: "3"
+    disabled: true
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const response = pm.response.json();\r
+
+      const nonFiction = response.filter((books)=> books.available === true);\r
+
+      const book = nonFiction[0];\r
+
+      \r
+
+      if(book){\r
+
+      \    pm.environment.set(\"bookID\", book.id);\r
+
+      }\r
+
+      \r
+
+      pm.test(\"book found\" , ()=>{\r
+
+      \    pm.expect(book).to.be.an(\"object\");\r
+
+      \    pm.expect(book.type).to.eql(\"non-fiction\");\r
+
+      })\r\n"
+    language: text/javascript
+settings: {}
+order: 1000

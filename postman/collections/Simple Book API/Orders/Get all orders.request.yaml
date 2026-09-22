@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{baseUrl}}/orders"
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{accessToken}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r\n"
+    language: text/javascript
+settings: {}
+order: 2000

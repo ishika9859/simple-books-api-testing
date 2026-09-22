@@ -1,0 +1,26 @@
+$kind: http-request
+url: "{{baseUrl}}/orders/:orderID"
+method: DELETE
+pathVariables:
+  orderID: "{{orderID}}"
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{accessToken}}"
+scripts:
+  - type: afterResponse
+    code: "\r
+
+      pm.test(\"order deleted\" , ()=>{\r
+
+      \    pm.response.to.have.status(204);\r
+
+      })\r
+
+      \r\n"
+    language: text/javascript
+settings: {}
+order: 5000

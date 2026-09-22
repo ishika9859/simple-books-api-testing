@@ -1,0 +1,10 @@
+name: Simple Book API - Local
+values:
+  - key: baseUrl
+    value: 'https://simple-books-api.click'
+  - key: accessToken
+    value: ''
+  - key: bookID
+    value: ''
+  - key: orderID
+    value: ''

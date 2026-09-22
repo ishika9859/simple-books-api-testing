@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{baseUrl}}/orders/:orderID"
+method: GET
+pathVariables:
+  orderID: "{{orderID}}"
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{accessToken}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      const response = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Order ID matches requested order\", function () {\r
+
+      \    pm.expect(response.id).to.eql(pm.environment.get(\"orderID\"));\r
+
+      });"
+    language: text/javascript
+settings: {}
+order: 3000

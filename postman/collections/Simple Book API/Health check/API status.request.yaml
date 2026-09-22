@@ -1,0 +1,35 @@
+$kind: http-request
+url: "{{baseUrl}}/status"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const response = pm.response.json();\r
+
+      \r
+
+      console.log(response.status);\r
+
+      console.log(response['status']);\r
+
+      \r
+
+      pm.test(\"Status is OK\" , ()=>{\r
+
+      \    pm.expect(response.status).to.eql(\"OK\");\r
+
+      })\r
+
+      \r
+
+      pm.execution.setNextRequest(\"List of Books\");"
+    language: text/javascript
+settings: {}
+order: 1000
