@@ -19,6 +19,16 @@ scripts:
 
       \    pm.expect(pm.response.json()[\"current-stock\"]).to.be.above(0);\r
 
+      });\r
+
+      const response = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Returned book ID matches requested book\", function () {\r
+
+      \    pm.expect(response.id).to.eql(pm.environment.get(\"bookID\"));\r
+
       });"
     language: text/javascript
 settings: {}

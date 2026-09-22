@@ -14,13 +14,21 @@ scripts:
   - type: afterResponse
     code: "\r
 
-      pm.test(\"order deleted\" , ()=>{\r
+      \r
+
+      pm.test(\"Status code is 204\", function () {\r
 
       \    pm.response.to.have.status(204);\r
 
-      })\r
+      });\r
 
-      \r\n"
+      \r
+
+      pm.test(\"Response has no content\", function () {\r
+
+      \    pm.expect(pm.response.text()).to.be.empty;\r
+
+      });\r\n"
     language: text/javascript
 settings: {}
 order: 5000

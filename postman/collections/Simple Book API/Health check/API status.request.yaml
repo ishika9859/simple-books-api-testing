@@ -25,11 +25,7 @@ scripts:
 
       \    pm.expect(response.status).to.eql(\"OK\");\r
 
-      })\r
-
-      \r
-
-      pm.execution.setNextRequest(\"List of Books\");"
+      })\r\n"
     language: text/javascript
 settings: {}
 order: 1000

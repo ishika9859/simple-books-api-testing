@@ -16,6 +16,28 @@ scripts:
 
       });\r
 
+      const response = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Response is an array\", function () {\r
+
+      \    pm.expect(response).to.be.an(\"array\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Every order has an ID\", function () {\r
+
+      \    response.forEach(function (order) {\r
+
+      \        pm.expect(order.id).to.exist;\r
+
+      \    });\r
+
+      });\r
+
       \r\n"
     language: text/javascript
 settings: {}

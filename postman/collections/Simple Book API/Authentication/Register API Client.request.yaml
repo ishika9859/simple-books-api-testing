@@ -26,7 +26,13 @@ scripts:
 
       \r
 
-      pm.environment.set(\"accessToken\", response.accessToken);"
+      pm.environment.set(\"accessToken\", response.accessToken);\r
+
+      pm.test(\"Access token is returned\", function () {\r
+
+      \    pm.expect(response.accessToken).to.be.a(\"string\").and.not.empty;\r
+
+      });"
     language: text/javascript
 settings: {}
 order: 1000

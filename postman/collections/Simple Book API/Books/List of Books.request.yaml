@@ -41,7 +41,37 @@ scripts:
 
       \    pm.expect(book.type).to.eql(\"non-fiction\");\r
 
-      })\r\n"
+      })\r
+
+      pm.test(\"Response is an array\", function () {\r
+
+      \    pm.expect(response).to.be.an(\"array\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"All returned books are non-fiction\", function () {\r
+
+      \    response.forEach(function (book) {\r
+
+      \        pm.expect(book.type).to.eql(\"non-fiction\");\r
+
+      \    });\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Every book has an ID\", function () {\r
+
+      \    response.forEach(function (book) {\r
+
+      \        pm.expect(book.id).to.exist;\r
+
+      \    });\r
+
+      });\r\n"
     language: text/javascript
 settings: {}
 order: 1000

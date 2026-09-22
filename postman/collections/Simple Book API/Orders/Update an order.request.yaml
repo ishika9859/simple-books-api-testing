@@ -20,7 +20,13 @@ scripts:
 
       \    pm.response.to.have.status(204);\r
 
-      })"
+      })\r
+
+      pm.test(\"Response has no content\", function () {\r
+
+      \    pm.expect(pm.response.text()).to.be.empty;\r
+
+      });"
     language: text/javascript
 settings: {}
 order: 4000
