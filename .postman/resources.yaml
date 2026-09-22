@@ -1,2 +1,7 @@
 workspace:
   id: 7491f491-d728-4a6a-8acc-abe9cf2087aa
+cloudResources:
+  collections:
+    ../postman/collections/Simple Book API: 57809419-0d343580-1ac6-48d8-b986-bc32c8c85d79
+  environments:
+    ../postman/environments/Simple Book API - Local.environment.yaml: 57809419-895ee4aa-a6f5-44e8-b8a5-5fe20ae4852f
