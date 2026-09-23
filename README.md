@@ -26,15 +26,15 @@ The project is version-controlled using **Postman Native Git integration**, keep
 
 ## Tools & Technologies
 
-| Tool | Purpose |
-|---|---|
-| Postman | API request design, test scripting, collection management |
-| Postman Native Git | Version control integration for the collection/environment |
-| Git & GitHub | Source control and repository hosting |
-| Newman | CLI-based collection execution |
-| Newman HTMLEXTRA Reporter | HTML test report generation |
-| Postman Monitor | Scheduled automated test execution |
-| JavaScript | Test assertions within Postman |
+| Tool                      | Purpose                                                    |
+| ------------------------- | ---------------------------------------------------------- |
+| Postman                   | API request design, test scripting, collection management  |
+| Postman Native Git        | Version control integration for the collection/environment |
+| Git & GitHub              | Source control and repository hosting                      |
+| Newman                    | CLI-based collection execution                             |
+| Newman HTMLEXTRA Reporter | HTML test report generation                                |
+| Postman Monitor           | Scheduled automated test execution                         |
+| JavaScript                | Test assertions within Postman                             |
 
 ---
 
@@ -63,17 +63,17 @@ Simple Book API
 
 ## API Endpoints Tested
 
-| Folder | Request | Purpose |
-|---|---|---|
-| Health check | API status | Verify API availability |
-| Authentication | Register API Client | Generate access token |
-| Books | List of Books | Retrieve all books |
-| Books | Get a single book | Retrieve a specific book by ID |
-| Orders | Submit an order | Create a new order |
-| Orders | Get all orders | Retrieve all orders |
-| Orders | Get an order | Retrieve a specific order by ID |
-| Orders | Update an order | Update an existing order |
-| Orders | Delete an Order | Delete an existing order |
+| Folder         | Request             | Purpose                         |
+| -------------- | ------------------- | ------------------------------- |
+| Health check   | API status          | Verify API availability         |
+| Authentication | Register API Client | Generate access token           |
+| Books          | List of Books       | Retrieve all books              |
+| Books          | Get a single book   | Retrieve a specific book by ID  |
+| Orders         | Submit an order     | Create a new order              |
+| Orders         | Get all orders      | Retrieve all orders             |
+| Orders         | Get an order        | Retrieve a specific order by ID |
+| Orders         | Update an order     | Update an existing order        |
+| Orders         | Delete an Order     | Delete an existing order        |
 
 ---
 
@@ -81,12 +81,12 @@ Simple Book API
 
 **Environment:** `Simple Book API - Local`
 
-| Variable | Description |
-|---|---|
-| `baseUrl` | Base URL of the Simple Books API |
-| `accessToken` | Bearer token used for authenticated requests |
-| `bookID` | ID of a book, used in book-related requests |
-| `orderID` | ID of an order, used in order-related requests |
+| Variable      | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `baseUrl`     | Base URL of the Simple Books API               |
+| `accessToken` | Bearer token used for authenticated requests   |
+| `bookID`      | ID of a book, used in book-related requests    |
+| `orderID`     | ID of an order, used in order-related requests |
 
 > **Note:** `accessToken` is intentionally left empty in the committed environment file. It is populated dynamically at runtime by the **Register API Client** request and is never committed with a real value.
 
@@ -97,32 +97,40 @@ Simple Book API
 Each request includes post-response test scripts written in JavaScript. Examples of implemented validations:
 
 **Register API Client**
+
 - Status code is 201
 - Access token is returned and is a non-empty string
 - Generated access token is stored in the environment
 
 **List of Books**
+
 - Response is an array
 - All returned books are non-fiction
 - Every returned book has an ID
 
 **Get a single book**
+
 - Returned book ID matches the requested book ID
 
 **Submit an order**
+
 - Order creation response confirms the order was created
 
 **Get all orders**
+
 - Response is an array
 - Every order has an ID
 
 **Get an order**
+
 - Returned order ID matches the requested order ID
 
 **Update an order**
+
 - Response has no content
 
 **Delete an Order**
+
 - Status code is 204
 - Response has no content
 
@@ -132,15 +140,15 @@ Each request includes post-response test scripts written in JavaScript. Examples
 
 Full collection run summary:
 
-| Metric | Result |
-|---|---|
-| Requests executed | 9 |
-| Assertions/tests run | 23 |
-| Failures | 0 |
-| Errors | 0 |
-| Skipped | 0 |
+| Metric               | Result |
+| -------------------- | ------ |
+| Requests executed    | 9      |
+| Assertions/tests run | 23     |
+| Failures             | 0      |
+| Errors               | 0      |
+| Skipped              | 0      |
 
-<!-- Add test execution screenshot here -->
+![Postman Test Execution Results](screenshots/test-execution.png)
 
 ---
 
@@ -148,25 +156,25 @@ Full collection run summary:
 
 A Postman Monitor is configured for scheduled API test execution and health checks.
 
-| Configuration | Value |
-|---|---|
-| Collection | Simple Book API |
-| Environment | Simple Book API - Local |
-| Schedule | Daily at 5:00 PM |
-| Notifications | Enabled on failure/error |
-| Follow redirects | Enabled |
-| SSL validation | Enabled |
+| Configuration    | Value                    |
+| ---------------- | ------------------------ |
+| Collection       | Simple Book API          |
+| Environment      | Simple Book API - Local  |
+| Schedule         | Daily at 5:00 PM         |
+| Notifications    | Enabled on failure/error |
+| Follow redirects | Enabled                  |
+| SSL validation   | Enabled                  |
 
 **Observed monitor status:**
 
-| Metric | Value |
-|---|---|
-| Status | Healthy |
-| Runs | 2 |
-| Total requests | 9 |
-| Passed assertions | 23 |
-| Failed tests | 0 |
-| Errors | 0 |
+| Metric            | Value   |
+| ----------------- | ------- |
+| Status            | Healthy |
+| Runs              | 2       |
+| Total requests    | 9       |
+| Passed assertions | 23      |
+| Failed tests      | 0       |
+| Errors            | 0       |
 
 This monitor performs scheduled test runs at the configured interval; it is not a continuous uptime monitoring solution.
 
@@ -191,12 +199,12 @@ Newman CLI execution
 HTMLEXTRA report (newman-report.html)
 ```
 
-| Item | Detail |
-|---|---|
-| Native Git format | Postman v3 YAML (source of truth, stored in this repository) |
-| Newman execution format | Exported Collection v2.1 JSON (used locally only) |
+| Item                     | Detail                                                                  |
+| ------------------------ | ----------------------------------------------------------------------- |
+| Native Git format        | Postman v3 YAML (source of truth, stored in this repository)            |
+| Newman execution format  | Exported Collection v2.1 JSON (used locally only)                       |
 | Exported collection file | `Simple Book API.postman_collection (1).json` (not committed to GitHub) |
-| Environment used | Exported environment JSON (used locally only) |
+| Environment used         | Exported environment JSON (used locally only)                           |
 
 > The exported Collection v2.1 JSON and exported environment JSON are used only for local Newman execution and are **not part of this GitHub repository**.
 
@@ -230,7 +238,7 @@ newman run "path/to/Simple Book API.postman_collection (1).json" \
 
 An initial report generation exposed runtime authentication data. The report was regenerated with the `skipSensitiveData` flag, manually reviewed for Bearer token / Authorization header exposure, and only the sanitized version was committed to this repository. `newman-report.html` resides at the repository root.
 
-<!-- Add Newman HTMLExtra report screenshot here -->
+![Newman HTMLEXTRA Report](screenshots/newman-report.png)
 
 ---
 
@@ -240,7 +248,7 @@ An initial report generation exposed runtime authentication data. The report was
 - The Postman collection and environment are maintained through **Postman Native Git integration**, keeping the local Postman workspace, Postman cloud workspace, and this GitHub repository synchronized.
 - Development is tracked using meaningful Git commits.
 
-<!-- Add Postman collection screenshot here -->
+![Postman Collection Structure](screenshots/postman-collection-structure.png)
 
 ---
 
@@ -329,4 +337,7 @@ The following are potential future improvements and are **not currently implemen
 
 ## Author
 
-Maintained as a personal API testing portfolio project.
+**Ishika Gupta**  
+B.Tech CSE Student | Backend Development & API Testing
+
+This project is maintained as part of my software development and API testing portfolio.
