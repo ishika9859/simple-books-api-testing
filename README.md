@@ -148,7 +148,7 @@ Full collection run summary:
 | Errors               | 0      |
 | Skipped              | 0      |
 
-![Postman Test Execution Results](screenshots/test-execution.png)
+![Postman Test Execution Results](ScreenShots/test-execution.png)
 
 ---
 
@@ -238,7 +238,7 @@ newman run "path/to/Simple Book API.postman_collection (1).json" \
 
 An initial report generation exposed runtime authentication data. The report was regenerated with the `skipSensitiveData` flag, manually reviewed for Bearer token / Authorization header exposure, and only the sanitized version was committed to this repository. `newman-report.html` resides at the repository root.
 
-![Newman HTMLEXTRA Report](screenshots/newman-report.png)
+![Newman HTMLEXTRA Report](ScreenShots/newman-report.png)
 
 ---
 
@@ -248,7 +248,7 @@ An initial report generation exposed runtime authentication data. The report was
 - The Postman collection and environment are maintained through **Postman Native Git integration**, keeping the local Postman workspace, Postman cloud workspace, and this GitHub repository synchronized.
 - Development is tracked using meaningful Git commits.
 
-![Postman Collection Structure](screenshots/postman-collection-structure.png)
+![Postman Collection Structure](ScreenShots/postman-collection-structure.png)
 
 ---
 
