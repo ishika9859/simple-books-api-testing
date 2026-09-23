@@ -1,0 +1,14 @@
+# Newman local exports
+*.postman_collection.json
+*.postman_environment.json
+
+# Local Newman output
+newman-report-*.html
+
+# Local environment/secrets
+.env
+.env.*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
