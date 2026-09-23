@@ -248,7 +248,7 @@ An initial report generation exposed runtime authentication data. The report was
 - The Postman collection and environment are maintained through **Postman Native Git integration**, keeping the local Postman workspace, Postman cloud workspace, and this GitHub repository synchronized.
 - Development is tracked using meaningful Git commits.
 
-![Postman Collection Structure](ScreenShots/postman-collection-structure.png)
+![Postman Collection Structure](ScreenShots/postman-collection-structure%281%29.png)
 
 ---
 
